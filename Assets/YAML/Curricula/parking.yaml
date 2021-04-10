@@ -1,0 +1,7 @@
+ParkingAIBehavior:
+  measure: reward
+  thresholds: [0.5, 0.8, 1.0, 1.3]
+  min_lesson_length: 100
+  signal_smoothing: true
+  parameters:
+    nb_obstacles: [0.0, 1.0, 5.0, 10.0, 20.0]
