@@ -13,23 +13,29 @@ We used two training scenes: one in a simpler environment (BasicTraining), and o
 
 We started from the RollerBall example of ML-Agents. We modified the Agent to turn it into a car, and used the observations and configuration file provided in the following article: https://auro.ai/blog/2020/05/learning-to-drive/ . We added Ray Perception Sensors to the car, and set the reward for reaching the target to +1.0.
 
-We first trained the agent to find a target:
-![](/Media/target-training.gif)(speed x20)
+We first trained the agent to find the target:
+
+![](/Media/target-training.gif)(x20 speed)
 
 We then replaced the target with our parking spot, progressively increasing the constraints to receive the reward: to be considered parked in the game, the car must be less than 0.3 away and the angle bewteen the car and the parking spot must be less than 15°. So we started with (distance, angle) : (1.0, 45), then decreased to  (0.75, 30), (0.5, 20), and finally (0.3, 15).
-![](/Media/spot-training.gif)(speed x20)
+
+![](/Media/spot-training.gif)(x20 speed)
 
 We then added obstacles, with -1.0 reward (and EndEpisode) if the car collides with one. The obstacles are the other cars and the walls.
-![](/Media/obstacles-training.gif)(speed x20)
+
+![](/Media/obstacles-training.gif)(x20 speed)
 
 Once the mean reward reached a plateau, we changed the environment to the parking lot and trained it further:
-![](/Media/parking-training.gif)(speed x20)
+
+![](/Media/parking-training.gif)(x20 speed)
 
 We reached a mean cumulative reward of ~0.88 .
+
 ![](/Media/environment-cumulative-reward.png)
 
 ## Game
-We added our trained AI to the game, and it was pretty decent.
+We added our trained AI to the game, and it was pretty decent. (The AI is the transparent car)
+
 ![](/Media/game-1.gif)
 ![](/Media/game-2.gif)
 
